@@ -1,24 +1,9 @@
-# README
+E-Commerce Application to expose the data that powers the site through an API that the front end will consume.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Technical goals
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Expose an API
+* Use serializers to format JSON responses
+* Test API exposure
+* Compose advanced ActiveRecord queries to analyze information stored in SQL databases
+* Write basic SQL statements without the assistance of an ORM.
