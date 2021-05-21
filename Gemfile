@@ -12,13 +12,22 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+  gem 'figaro'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do
   gem 'listen', '~> 3.3'
+  gem 'rubocop-rails'
 end
 
-gem 'simplecov', require: false, group: :test
+group :test do
+  gem 'rspec-rails'
+  gem 'simplecov'
+end
 
+gem 'factory_bot_rails'
+gem 'faker'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
