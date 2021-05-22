@@ -14,14 +14,14 @@ RSpec.describe "Merchants API", type: :request do
 
       @merchant = JSON.parse(response.body, symbolize_names: true)
 
-      expect(info).to have_key(:id)
-      expect(info[:id].to_i).to be_an(Integer)
+      expect(@merchant[:data]).to have_key(:id)
+      expect(@merchant[:data][:id].to_i).to be_an(Integer)
 
-      expect(info).to have_key(:type)
-      expect(info[:type]).to eq('merchant')
+      expect(@merchant[:data]).to have_key(:type)
+      expect(@merchant[:data][:type]).to eq('merchant')
 
-      expect(info[:attributes]).to have_key(:name)
-      expect(info[:attributes][:name]).to be_a(String)
+      expect(@merchant[:data][:attributes]).to have_key(:name)
+      expect(@merchant[:data][:attributes][:name]).to be_a(String)
 
     end
   end
