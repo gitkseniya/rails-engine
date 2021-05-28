@@ -3,4 +3,9 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
   has_many :transactions, through: :invoices
+
+  def self.search_by_name(name)
+    where(["name ILIKE ? or description ILIKE ?", "%#{name}%", "%#{name}%"])
+    .first
+  end
 end
