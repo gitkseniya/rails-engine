@@ -9,4 +9,19 @@ class Merchant < ApplicationRecord
     where('name ILIKE ?', "%#{name}%").order(:name)
     .first
   end
+
+  def self.most_items_sold(quantity)
+    joins(:transactions)
+      .select('merchants.*, sum(invoice_items.quantity) as sold_items')
+      .where('transactions.result = ?', 'success')
+      .group(:id)
+      .order('sold_items DESC')
+      .limit(quantity)
+  end
+
+  def count_items_sold
+    transactions.where('transactions.result = ?', 'success')
+                .pluck('sum(invoice_items.quantity)')
+                .first
+  end
 end
