@@ -30,8 +30,11 @@ class Api::V1::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-
-    render json: ItemSerializer.new(@item)
+    if @item.save
+      render json: ItemSerializer.new(@item)
+    else
+      render json: { data: {} }, status: 400
+    end
   end
 
 
