@@ -5,7 +5,6 @@ class Item < ApplicationRecord
   has_many :transactions, through: :invoices
 
   def self.search_by_name(name)
-    where(["name ILIKE ? or description ILIKE ?", "%#{name}%", "%#{name}%"])
-    .first
+    where('name ILIKE ? or description LIKE ?', "%#{name}%", "%#{name}%").order(:name)
   end
 end

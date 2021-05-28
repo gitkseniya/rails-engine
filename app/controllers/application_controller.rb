@@ -10,4 +10,5 @@ class ApplicationController < ActionController::API
 
     (params[:page].to_i - 1) * limit_per_page
   end
+
 end
