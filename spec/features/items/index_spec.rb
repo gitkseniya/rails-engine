@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'items API', type: :request do
   before :each do
-    create_list(:item, 51)
+    @items = create_list(:item, 51)
   end
 
   describe 'item index' do
@@ -32,7 +32,7 @@ RSpec.describe 'items API', type: :request do
       json = JSON.parse(response.body, symbolize_names: true)
       expect(response).to have_http_status(200)
       expect(json[:data].count).to eq(20)
-      expect(json[:data].first[:id].to_i).to be_an(Integer)
+      expect(json[:data].first[:id].to_i).to eq(@items[20].id)
     end
 
     it 'returns 50 items per page' do
@@ -52,5 +52,12 @@ RSpec.describe 'items API', type: :request do
       expect(json[:data].count).to eq(0)
     end
 
+    it 'returns the first page by default if page number < 1' do
+      get '/api/v1/items?page=0'
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(200)
+      expect(json[:data].count).to eq(20)
+    end
   end
 end

@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "Merchants API", type: :request do
+RSpec.describe 'Merchants API', type: :request do
   before :each do
     @merchant = create(:merchant)
 
-    get "/api/v1/merchants/#{@merchant.id}"
   end
 
   describe 'merchant show' do
-    it "returns one merchant" do
+    it 'returns one merchant' do
+      get "/api/v1/merchants/#{@merchant.id}"
 
       expect(response).to be_successful
 
@@ -22,7 +22,6 @@ RSpec.describe "Merchants API", type: :request do
 
       expect(@merchant[:data][:attributes]).to have_key(:name)
       expect(@merchant[:data][:attributes][:name]).to be_a(String)
-
     end
   end
 end

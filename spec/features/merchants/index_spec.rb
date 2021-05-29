@@ -1,13 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "Merchants API", type: :request do
+RSpec.describe 'Merchants API', type: :request do
   before :each do
     create_list(:merchant, 30)
   end
 
   describe 'merchant index' do
-    it "returns first 20 merchants" do
-
+    it 'returns first 20 merchants' do
       get '/api/v1/merchants'
 
       expect(response).to be_successful
