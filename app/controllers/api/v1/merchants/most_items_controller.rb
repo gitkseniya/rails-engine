@@ -6,6 +6,5 @@ class Api::V1::Merchants::MostItemsController < ApplicationController
     else
       render json: { data: [], error: 'error' }, status: 400
     end
-
   end
 end

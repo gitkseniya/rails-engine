@@ -7,6 +7,5 @@ class Api::V1::Items::SearchController < ApplicationController
     else
       render json: ItemSerializer.new(@items)
     end
-
   end
 end

@@ -22,10 +22,10 @@ class Api::V1::ItemsController < ApplicationController
     end
   end
 
-  def edit
-    @merchant = Merchant.find(params[:merchant_id])
-    @item = Item.find(params[:id])
-  end
+  # def edit
+  #   @merchant = Merchant.find(params[:merchant_id])
+  #   @item = Item.find(params[:id])
+  # end
 
   def update
     @item = Item.find(params[:id])
@@ -55,7 +55,6 @@ class Api::V1::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :unit_price, :merchant_id)
+    params.permit(:name, :description, :unit_price, :merchant_id)
   end
-
 end
